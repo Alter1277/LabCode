@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int studentNo = 0;
+    int score;
+    printf("Please enter student number. (Enter -1 to end program)\n");
+    scanf("%d", &studentNo);
+    while(studentNo != -1)
+    {
+        printf("Please enter score of student.\n");
+        scanf("%d", &score);
+        if(score >= 0 && score <=100)
+        {
+            switch(score/10)
+            {
+                case 10:
+                case 9:
+                case 8:
+                    printf("Student's grade is A\n");
+                    break;
+                case 7:
+                    if(score %10 >= 5){
+                        printf("Student's grade is A\n");
+                    }
+                    else{
+                        printf("Student's grade is B\n");
+                    }
+                    break;
+                case 6:
+                    if(score %10 >= 5){
+                        printf("Student's grade is B\n");
+                    }
+                    else{
+                        printf("Student's grade is C\n");
+                    }
+                    break;
+                case 5:
+                    if(score %10 >= 5){
+                        printf("Student's grade is C\n");
+                    }
+                    else{
+                        printf("Student's grade is D\n");
+                    }
+                    break;
+                case 4:
+                    if(score %10 >= 5){
+                        printf("Student's grade is D\n");
+                    }
+                    else{
+                        printf("Student's grade is F\n");
+                    }
+                    break;
+                default:
+                    printf("Student's grade is F\n");
+                    break;
+                }
+            }
+        else
+        {
+            printf("Please enter a valid score.\n");
+        }
+        printf("Please enter student number. (Enter -1 to end program)\n");
+        scanf("%d", &studentNo);
+    }
+    return 0;
+}
