@@ -87,13 +87,13 @@ void postOrderIterativeS2(BSTNode *root)
 	 Stack s1,s2;
 	 s1.top = NULL;
 	 s2.top = NULL;
-	 
+	 if(root == NULL) return;
 	 push(&s1, root);
 	 while(!isEmpty(&s1)){
 	 	root = pop(&s1);
 	 	push(&s2,root);
-		push(&s1,root->left);
-		push(&s1,root->right);
+		if(root->left != NULL) push(&s1,root->left);
+		if(root->right != NULL) push(&s1,root->right);
 	 }
 	 while(!isEmpty(&s2)){
 	 	printf("%d ", pop(&s2)->item);
