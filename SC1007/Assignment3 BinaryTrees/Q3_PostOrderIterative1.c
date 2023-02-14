@@ -103,7 +103,7 @@ void postOrderIterativeS1(BSTNode *root)
 			push(&s,curr);
 			curr = curr->right;
 		}
-		printf(curr->item);
+		printf("%d ",curr->item);
 		curr = NULL;
 	 }while(!isEmpty(&s);
 	
