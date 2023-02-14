@@ -94,7 +94,7 @@ void postOrderIterativeS1(BSTNode *root)
 	 do{
 	 	while(curr!=NULL){
 			if(curr->right != NULL) push(&s,curr->right);
-			push(&s,curr):
+			push(&s,curr);
 			curr = curr->left;
 		}
 		curr = pop(&s);
@@ -103,9 +103,11 @@ void postOrderIterativeS1(BSTNode *root)
 			push(&s,curr);
 			curr = curr->right;
 		}
-		printf("%d ",curr->item);
-		curr = NULL;
-	 }while(!isEmpty(&s);
+		else{
+			printf("%d ",curr->item);
+			curr = NULL;
+		}
+	 }while(!isEmpty(&s));
 	
 	 
 	 
