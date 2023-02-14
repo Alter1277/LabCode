@@ -97,7 +97,7 @@ void inOrderTraversal(BSTNode *root)
 		}
 		else if(temp == NULL && !(isEmpty(&s))){
 			temp = pop(&s);
-			printf(temp->item);
+			printf("%d ",temp->item);
 			temp = temp->right;
 		}
 	} break;
