@@ -90,22 +90,23 @@ int main()
 
 int insertSortedLL(LinkedList *ll, int item)
 {
-	ListNode *temp = ll->head;
+	ListNode *temp = ll->head; //TempNode
 	int i;
 	if(ll->size==0){
-        insertNode(ll,0,item);
+        insertNode(ll,0,item);	//If empty LL insert at index 0.
         return 0;
 	}
-	for(i=0; i < ll->size ;i++){
-        temp=findNode(ll,i);
+	for(i=0; i < ll->size ;i++){ //Loop through list
+        temp=findNode(ll,i); //Read current item
         if(item == temp->item){
-            return -1;}
+            return -1;}  //Don't Add Duplicates
         else if(item < temp->item){
             insertNode(ll,i,item);
             return i;
         }}
-        if(i=ll->size){
-            insertNode(ll,ll->size,item);
+        if(i=ll->size){ 
+            insertNode(ll,ll->size,item);// If i is end of list, insertNode at size Outside loop
+					 // for optimisation.
             return i;
         }
 }
