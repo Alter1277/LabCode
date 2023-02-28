@@ -108,7 +108,7 @@ void deleteList(ListNode **ptrHead){
 
 int split(ListNode *head, ListNode **ptrEvenList, ListNode **ptrOddList)
 {
-	int even = 1, evenSize = 0, oddSize = 0;
+	/*int even = 1, evenSize = 0, oddSize = 0;
 	ListNode *cur=head;
 
 	if (cur == NULL)
@@ -124,6 +124,16 @@ int split(ListNode *head, ListNode **ptrEvenList, ListNode **ptrOddList)
 		}
 	cur = cur ->next;
 	even = -even;
+	}
+	return 0;*/
+	ListNode *temp = head;
+	if(temp ==NULL) return -1;
+	int i =0, odd = 0, even = 0;
+	while(temp != NULL){
+		if(i%2 != 0) insertNode(ptrOddList,odd++,temp->item);
+		else insertNode(ptrEvenList,even++,temp->item);
+		temp = temp->next;
+		i++;
 	}
 	return 0;
 }
