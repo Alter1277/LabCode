@@ -125,6 +125,17 @@ void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
         }
 }
 
+/*	int i=0;
+	while(ll2.size != 0){
+		temp=findnode(ll1,i); Get current Node in ll1
+		if(temp == NULL) return; If ll1 is empty return  <-- Maybe dont need
+		if(insertNode(ll1,i+1,ll2->head->item)==-1) return; 
+			^If fail to insert into ll1 return
+		removeNode(ll2,0);
+		i+=2;
+	}
+
+*/
 
 ///////////////////////////////////////////////////////////////////////////////////
 
