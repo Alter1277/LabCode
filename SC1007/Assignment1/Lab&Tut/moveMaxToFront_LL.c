@@ -126,8 +126,10 @@ int moveMaxToFront(ListNode **ptrHead)
 			index = i;
 		}
 	}
-    	removeNode(ll,index);
+    	if(index == 0) return 0;
+	removeNode(ll,index);
 	insertNode(ll,0,max);
+    	return 0;
 }
 	
 //////////////////////////////////////////////////////////////////////////////////
