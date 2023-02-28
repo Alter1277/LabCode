@@ -106,7 +106,21 @@ void moveOddItemsToBack(LinkedList *ll)
 	    }
 	}
 }
-
+/* 
+	Get size of list. If list <2 return;
+	for i=0,i<s,i++{
+		if(curr->item %2 !=0){
+			temp = curr->item
+			curr = curr->next
+			removeNode(ll,index)
+			insertNode(ll,s,temp)
+		
+		}
+	else{
+		curr=curr->next
+		index++
+	}
+*/
 ///////////////////////////////////////////////////////////////////////////////////
 
 void printList(LinkedList *ll){
