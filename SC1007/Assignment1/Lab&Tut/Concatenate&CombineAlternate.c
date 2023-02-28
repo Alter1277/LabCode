@@ -1,5 +1,5 @@
 int concatenate(ListNode **ptrHead1, ListNode *head2){
-	ListNode *temp = *ptrHead1;
+	/*ListNode *temp = *ptrHead1;
 	// Both lists empty, let's return a -1 error value
 	if (*ptrHead1 == NULL && head2 == NULL)
 		return -1;
@@ -16,7 +16,18 @@ int concatenate(ListNode **ptrHead1, ListNode *head2){
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = head2;
+	return 0;*/
+	ListNode *temp;
+	if(*ptrHead1 == NULL && head2 == NULL) return -1;
+	if(*ptrHead1 == NULL) {
+		*ptrHead1 = head2;
+		return 0;}
+	if(head2 == NULL) return 0;
+	temp = *ptrHead1;
+	while(temp->next != NULL) temp = temp->next;
+	temp->next = head2;
 	return 0;
+	
 }
 int combineAlternating(ListNode **ptrHead, ListNode *head1, ListNode *head2)
 {
