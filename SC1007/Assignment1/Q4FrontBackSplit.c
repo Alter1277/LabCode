@@ -143,15 +143,15 @@ void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, Linke
 
 /*	
 	if(ll->size == 0) return;
-	int i =0, size, temp;
+	int i =0, size, temp, j;
 	if(ll->size%2 ==0) size = ll->size/2;
 	else size = (ll->size/2) +1
 	while(i<size){
 		temp = findNode(ll,i);
 		insertNode(Front,i++,temp);
 		}
-	i = 0;
-	while(i<(ll->size-size)){
+	j = 0;
+	while(j<(ll->size-size)){
 		temp = findNode(ll,i);
 		insertNode(Back,i++,temp);
 		}
