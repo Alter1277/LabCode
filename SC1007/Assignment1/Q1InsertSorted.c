@@ -104,7 +104,7 @@ int insertSortedLL(LinkedList *ll, int item)
             insertNode(ll,i,item);
             return i;
         }}
-        if(i=ll->size){ 
+        if(i==ll->size){ 
             insertNode(ll,ll->size,item);// If i is end of list, insertNode at size Outside loop
 					 // for optimisation.
             return i;
