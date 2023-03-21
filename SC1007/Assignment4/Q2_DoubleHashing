@@ -87,20 +87,53 @@ int HashInsert(int key, HashSlot hashTable[])
 {
    int index = hash1(key);
    int incre = hash2(key);
-   int initial = key;
+   int dex2, slot;
    int size = 0;
-   while(hashTable[index].indicator == USED){
-       if(hashTable[index].key == initial) return -1;
-       key += incre;
-       index = hash1(key);
-       size ++;
-       if(size >= TABLESIZE) return size;
-   }
-   hashTable[index].indicator=USED;
-   hashTable[index].key = initial;
-   return size; 
 
+   
+   while(hashTable[index].indicator == USED){  
+        if(hashTable[index].key == key) return -1;
+        //key += incre;
+        //index = hash1(key);
+        size++; 
+        index = hash1(index + incre);
+        if(size >= TABLESIZE) return TABLESIZE;
+   }
+    if(hashTable[index].indicator!=EMPTY){
+        dex2 = hash1(index+incre);
+        slot = size+1;
+
+        while(hashTable[dex2].indicator != EMPTY && size < TABLESIZE-1){
+            
+            if(hashTable[dex2].indicator == USED){
+                size++;
+                if(hashTable[dex2].key == key) return -1;
+            }
+            //key += incre;
+            //index = hash1(key);
+            slot++;
+            if(size >= TABLESIZE) return TABLESIZE;
+            dex2 = hash1(dex2 + incre);
+            
+        }
+    }
+    /*size++;
+    index = hash1(index+incre);
+    while(hashTable[index].indicator != EMPTY && size < TABLESIZE -1){
+        if(hashTable[index].indicator == USED){
+            if(hashTable[index].key == key) {
+                size ++;
+                return -1;
+        }}
+        size++;
+        index = hash1(index+incre);
+    }*/
+
+    hashTable[index].indicator=USED;
+    hashTable[index].key = key;
+    return size; 
 }
+
 
 int HashDelete(int key, HashSlot hashTable[])
 {
@@ -109,16 +142,21 @@ int HashDelete(int key, HashSlot hashTable[])
    int incre = hash2(key);
    int initial = key;
    int size = 0;
-   while(hashTable[index].indicator != EMPTY){
-       if(hashTable[index].key == initial && hashTable[index].indicator==USED) {
-       hashTable[index].indicator=DELETED;
-       return size +1 ;
-       }
-       key += incre;
-       index = hash1(key);
-       size ++;
+   while(hashTable[index].indicator != EMPTY && size < TABLESIZE){
+    if(hashTable[index].indicator == USED && hashTable[index].key==initial)
+    { 
+        hashTable[index].indicator=DELETED;
+        return size +1 ;
+    }
+    
+    /*if(hashTable[index].indicator == DELETED) {
+        index = hash1(index + incre);
+        continue;
+    }*/
+    size ++;
+    key += incre;
+    index = hash1(key);
+    //if(size >= TABLESIZE) return -1;
    }
-   if(hashTable[index].indicator != USED) return -1;
-   
-   return size+1;
+   return -1;
 }
