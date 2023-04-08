@@ -90,7 +90,7 @@ int main()
    insertAdjVertex(&g.list[2*Std+Prj+j+1], 2*Std+Prj+Mtr+1);
    g.E++;
  }
-/*ListNode* t;//check
+ListNode* t;//check
 	for(i=0;i<g.V;i++){
          printf("%d: ",i);
          t = g.list[i];
@@ -99,14 +99,14 @@ int main()
              t = t->next;
          }
          printf("\n");
-    }*/
+    }
 
  //Write your code
 
  //apply Ford Fulkerson algorithm
  // use DFS or BFS to find a path
  maxMatch = matching(g);
- printf("%d\n", maxMatch);
+ printf("Max = %d\n", maxMatch);
  return 0;
 }
 
@@ -121,14 +121,14 @@ int matching(Graph g)
       arr[i]=0;
    }
    
-   while(DFS(g,1,g.V-1,arr)==1){
+   while(DFS(g,0,g.V-1,arr)==1){
       printf("Path \n");
       j=0;
       while(arr[j+1] !=-1){
          temp1=arr[j];
          temp2=arr[j+1];
-         insertAdjVertex(&g.list[temp1-1],temp2);
-         removeAdjVertex(&g.list[temp2-1],temp1);
+         insertAdjVertex(&g.list[temp1],temp2);
+         removeAdjVertex(&g.list[temp2],temp1);
          j++;
       }
       for (i=0;i<1024;i++){
@@ -136,11 +136,22 @@ int matching(Graph g)
       }
    }
    
-   
+   ListNode* t;//check
+   printf("2nd: \n");
+	for(i=0;i<g.V;i++){
+       
+         printf("%d: ",i);
+         t = g.list[i];
+         while(t!=NULL){
+             printf("%d -> ",t->vertex);
+             t = t->next;
+         }
+         printf("\n");
+    }
    i=0;
-   cur=g.list[0];
+   cur=g.list[g.V-1];
    while(cur!=NULL){
-      printf("%d\n",cur->vertex);
+      printf("vertex: %d\n",cur->vertex);
       i++;
       cur=cur->next;
    }
@@ -158,16 +169,16 @@ int DFS(Graph g, int start,int end,int arr[]){
    for (i=0;i<g.V;i++) visited[i]=0;
 
    push(&s,start);
-   visited[start-1]=1;
+   visited[start]=1;
 
    while(isEmptyStack(s)==0){
       temp = peek(s);
-      cur = g.list[temp-1];
+      cur = g.list[temp];
       yet2visit=0;
       while(cur!=NULL){
-         if(visited[cur->vertex-1] ==0){
+         if(visited[cur->vertex] ==0){
             push(&s,cur->vertex);
-            visited[cur->vertex-1]=1;
+            visited[cur->vertex]=1;
             yet2visit=1;
             break;
          }
@@ -187,7 +198,7 @@ int DFS(Graph g, int start,int end,int arr[]){
                pop(&s);
             }
             arr[index]=-1;
-            printf("%d\n",arr[index]);
+            printf("%d\n",arr[index-1]);
             return 1;
          }
       }
