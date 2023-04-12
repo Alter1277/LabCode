@@ -90,7 +90,7 @@ int main()
    insertAdjVertex(&g.list[2*Std+Prj+j+1], 2*Std+Prj+Mtr+1);
    g.E++;
  }
-ListNode* t;//check
+/*ListNode* t;//check
 	for(i=0;i<g.V;i++){
          printf("%d: ",i);
          t = g.list[i];
@@ -99,14 +99,14 @@ ListNode* t;//check
              t = t->next;
          }
          printf("\n");
-    }
+    }*/
 
  //Write your code
 
  //apply Ford Fulkerson algorithm
  // use DFS or BFS to find a path
  maxMatch = matching(g);
- printf("Max = %d\n", maxMatch);
+ printf("%d\n", maxMatch);
  return 0;
 }
 
@@ -122,7 +122,7 @@ int matching(Graph g)
    }
    
    while(DFS(g,0,g.V-1,arr)==1){
-      printf("Path \n");
+      //printf("Path \n");
       j=0;
       while(arr[j+1] !=-1){
          temp1=arr[j];
@@ -137,7 +137,7 @@ int matching(Graph g)
    }
    
    ListNode* t;//check
-   printf("2nd: \n");
+   /*printf("2nd: \n");
 	for(i=0;i<g.V;i++){
        
          printf("%d: ",i);
@@ -147,11 +147,11 @@ int matching(Graph g)
              t = t->next;
          }
          printf("\n");
-    }
+    }*/
    i=0;
    cur=g.list[g.V-1];
    while(cur!=NULL){
-      printf("vertex: %d\n",cur->vertex);
+      //printf("vertex: %d\n",cur->vertex);
       i++;
       cur=cur->next;
    }
@@ -185,11 +185,11 @@ int DFS(Graph g, int start,int end,int arr[]){
          cur=cur->next;
       }
       if(yet2visit==0){
-         printf("%d  %d \n",temp,end);
+         //printf("%d  %d \n",temp,end);
          if(temp!= end) pop(&s);
          
          else{
-            printf("Entered Else");
+            //printf("Entered Else");
             while(!isEmptyStack(s)){
                temp=peek(s);
                
@@ -198,7 +198,7 @@ int DFS(Graph g, int start,int end,int arr[]){
                pop(&s);
             }
             arr[index]=-1;
-            printf("%d\n",arr[index-1]);
+            //printf("%d\n",arr[index-1]);
             return 1;
          }
       }
